@@ -1,10 +1,10 @@
 import React from "react";
 
-const Anouncements = () => {
+const Announcements = () => {
   return (
     <div className="bg-white p-4 rounded-md">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold">Anouncements</h1>
+        <h1 className="text-xl font-semibold">Announcements</h1>
         <span className="text-sm text-gray-400">View All</span>
       </div>
       <div className="flex flex-col gap-4 mt-4">
@@ -46,4 +46,4 @@ const Anouncements = () => {
   );
 };
 
-export default Anouncements;
+export default Announcements;
