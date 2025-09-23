@@ -2,9 +2,23 @@
 
 import * as Clerk from "@clerk/elements/common";
 import * as SignIn from "@clerk/elements/sign-in";
+import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function SignInPage() {
+  const { isLoaded, isSignedIn, user } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    const role = user?.publicMetadata.role;
+
+    if (role) {
+      router.push(`/${role}`);
+    }
+  }, [router, user]);
+
   return (
     <div className="w-screen h-screen flex flex-col justify-center flex-grow items-center bg-classSkyLight">
       <SignIn.Root>
@@ -21,7 +35,7 @@ export default function SignInPage() {
               className="mx-auto size-10 text-zinc-950"
             />
 
-            <h1 className="mt-4 text-xl font-medium tracking-tight text-zinc-950">
+            <h1 className="mt-4 text-xl font-semibold tracking-tight text-zinc-950">
               Sign in to Class Link
             </h1>
           </header>
