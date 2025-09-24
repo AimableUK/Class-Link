@@ -105,6 +105,7 @@ const EventsListPage = async ({
               contains: value,
               mode: "insensitive",
             };
+            break;
           default:
             break;
         }

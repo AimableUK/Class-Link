@@ -101,6 +101,7 @@ const ExamListPage = async ({
             query.lesson.subject = {
               name: { contains: value, mode: "insensitive" },
             };
+            break;
 
           default:
             break;

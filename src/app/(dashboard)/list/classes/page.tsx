@@ -91,6 +91,7 @@ const SubjectsListPage = async ({
               contains: value,
               mode: "insensitive",
             };
+            break;
           default:
             break;
         }

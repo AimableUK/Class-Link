@@ -81,6 +81,7 @@ const AnnouncementsListPage = async ({
               contains: value,
               mode: "insensitive",
             };
+            break;
           default:
             break;
         }
