@@ -49,7 +49,7 @@ const AnnouncementsListPage = async ({
       <td className="flex items-center gap-4 p-4">{item.title}</td>
       <td>{item.class?.name || "-"}</td>
       <td className="hidden md:table-cell">
-        {new Intl.DateTimeFormat("en-US").format(item.date)}
+        {new Intl.DateTimeFormat("en-GB").format(item.date)}
       </td>
       <td>
         <div className="flex items-center gap-2">

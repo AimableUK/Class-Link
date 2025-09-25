@@ -59,17 +59,17 @@ const EventsListPage = async ({
       <td className="flex items-center gap-4 p-4">{item.title}</td>
       <td>{item.class?.name || "-"}</td>
       <td className="hidden md:table-cell">
-        {new Intl.DateTimeFormat("en-US").format(item.startTime)}
+        {new Intl.DateTimeFormat("en-GB").format(item.startTime)}
       </td>
       <td className="hidden md:table-cell">
-        {item.startTime.toLocaleDateString("en-US", {
+        {item.startTime.toLocaleDateString("en-GB", {
           hour: "2-digit",
           minute: "2-digit",
           hour12: false,
         })}
       </td>
       <td className="hidden md:table-cell">
-        {item.endTime.toLocaleDateString("en-US", {
+        {item.endTime.toLocaleDateString("en-GB", {
           hour: "2-digit",
           minute: "2-digit",
           hour12: false,

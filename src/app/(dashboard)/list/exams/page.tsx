@@ -61,7 +61,7 @@ const ExamListPage = async ({
         {item.lesson.teacher.name + " " + item.lesson.teacher.surname}
       </td>
       <td className="hidden md:table-cell">
-        {new Intl.DateTimeFormat("en-US").format(item.startTime)}
+        {new Intl.DateTimeFormat("en-GB").format(item.startTime)}
       </td>
       <td>
         <div className="flex items-center gap-2">
