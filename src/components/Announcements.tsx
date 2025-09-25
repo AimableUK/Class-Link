@@ -59,7 +59,7 @@ const Announcements = async () => {
                 {data[0].title}
               </h2>
               <span className="text-xs text-gray-600 bg-white rounded-md px-1 py-1">
-                {new Intl.DateTimeFormat("en-GB").format(data[0].date)}
+                {new Intl.DateTimeFormat("en-US").format(data[0].date)}
               </span>
             </div>
             <p className="text-sm text-gray-600 mt-1">{data[0].description} </p>
@@ -72,7 +72,7 @@ const Announcements = async () => {
                 {data[1].title}
               </h2>
               <span className="text-xs text-gray-600 bg-white rounded-md px-1 py-1">
-                {new Intl.DateTimeFormat("en-GB").format(data[1].date)}
+                {new Intl.DateTimeFormat("en-US").format(data[1].date)}
               </span>
             </div>
             <p className="text-sm text-gray-600 mt-1">{data[1].description}</p>
@@ -85,7 +85,7 @@ const Announcements = async () => {
                 {data[2].title}
               </h2>
               <span className="text-xs text-gray-600 bg-white rounded-md px-1 py-1">
-                {new Intl.DateTimeFormat("en-GB").format(data[2].date)}
+                {new Intl.DateTimeFormat("en-US").format(data[2].date)}
               </span>
             </div>
             <p className="text-sm text-gray-600 mt-1">{data[2].description} </p>
