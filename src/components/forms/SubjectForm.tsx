@@ -9,7 +9,6 @@ import { useFormState } from "react-dom";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import prisma from "@/lib/prisma";
 
 const SubjectForm = ({
   setOpen,
@@ -56,7 +55,6 @@ const SubjectForm = ({
 
   const { teachers = [] } = relatedData ?? {};
 
-
   return (
     <form className="flex flex-col gap-6" onSubmit={onSubmit}>
       <h1 className="text-xl font-semibold">
@@ -82,18 +80,23 @@ const SubjectForm = ({
         )}
 
         <div className="flex flex-col gap-2 w-full md:w-1/4">
-          <label htmlFor="gender" className="text-xs text-gray-500">
+          <label htmlFor="teachers" className="text-xs text-gray-500">
             Teachers
           </label>
           <select
             multiple
+            id="teachers"
             className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
             {...register("teachers")}
             defaultValue={data?.Teachers}
           >
             {teachers.map(
               (teacher: { id: string; name: string; surname: string }) => (
-                <option value={teacher.id} key={teacher.id}>
+                <option
+                  value={teacher.id}
+                  key={teacher.id}
+                  selected={data && teacher.id === data.teacherId}
+                >
                   {teacher.name + " " + teacher.surname}
                 </option>
               )
