@@ -7,10 +7,10 @@ import Image from "next/image";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { teacherSchema, TeacherSchema } from "@/lib/formValidationSchemas";
 import { useFormState } from "react-dom";
-import { createTeacher, updateTeacher } from "@/lib/actions";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { CldUploadWidget } from "next-cloudinary";
+import { createTeacher, updateTeacher } from "@/lib/actions";
 
 const TeacherForm = ({
   setOpen,
@@ -31,7 +31,7 @@ const TeacherForm = ({
     resolver: zodResolver(teacherSchema),
   });
 
-  const [img, setImg] = useState<any>();
+  const [img, setImg] = useState<any>(data?.img || null);
 
   const [state, formAction] = useFormState(
     type === "create" ? createTeacher : updateTeacher,
@@ -105,7 +105,7 @@ const TeacherForm = ({
         <InputField
           label="Last Name"
           name="surname"
-          defaultValue={data?.surName}
+          defaultValue={data?.surname}
           register={register}
           error={errors.surname}
         />
@@ -133,11 +133,21 @@ const TeacherForm = ({
         <InputField
           label="Birthday"
           name="birthday"
-          defaultValue={data?.birthday}
+          defaultValue={data?.birthday.toISOString().split("T")[0]}
           register={register}
           error={errors.birthday}
           type="date"
         />
+        {data && (
+          <InputField
+            label="Id"
+            name="id"
+            defaultValue={data?.id}
+            register={register}
+            error={errors?.id}
+            hidden
+          />
+        )}
         <div className="flex flex-col gap-2 w-full md:w-1/4">
           <label htmlFor="gender" className="text-xs text-gray-500">
             Gender
@@ -146,7 +156,7 @@ const TeacherForm = ({
             id="gender"
             className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
             {...register("gender")}
-            defaultValue={data?.sex}
+            defaultValue={data?.gender}
           >
             <option value="MALE">Male</option>
             <option value="FEMALE">Female</option>
@@ -170,7 +180,11 @@ const TeacherForm = ({
             defaultValue={data?.subjects}
           >
             {subjects.map((subject: { id: number; name: string }) => (
-              <option value={subject.id} key={subject.id}>
+              <option
+                value={subject.id}
+                key={subject.id}
+                // selected={data && subject.id === data.subjects}
+              >
                 {subject.name}
               </option>
             ))}

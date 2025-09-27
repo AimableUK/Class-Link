@@ -1,6 +1,5 @@
 "use client";
 
-import { deleteClass, deleteSubject, deleteTeacher } from "@/lib/actions";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -8,15 +7,22 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import { toast } from "react-toastify";
 import { FormContainerProps } from "./FormContainer";
+import {
+  deleteClass,
+  deleteExam,
+  deleteStudent,
+  deleteSubject,
+  deleteTeacher,
+} from "@/lib/actions";
 
 const deleteActionMap = {
   subject: deleteSubject,
   class: deleteClass,
   teacher: deleteTeacher,
-  student: deleteSubject,
+  student: deleteStudent,
+  exam: deleteExam,
   parent: deleteSubject,
   lesson: deleteSubject,
-  exam: deleteSubject,
   attendance: deleteSubject,
   event: deleteSubject,
   announcement: deleteSubject,
@@ -92,9 +98,22 @@ const forms: {
       relatedData={relatedData}
     />
   ),
-  // student: (setOpen, type, data) => (
-  //   <StudentForm setOpen={setOpen} type={type} data={data} relatedData={relatedData} />
-  // ),
+  student: (setOpen, type, data, relatedData) => (
+    <StudentForm
+      setOpen={setOpen}
+      type={type}
+      data={data}
+      relatedData={relatedData}
+    />
+  ),
+  exam: (setOpen, type, data, relatedData) => (
+    <ExamForm
+      setOpen={setOpen}
+      type={type}
+      data={data}
+      relatedData={relatedData}
+    />
+  ),
   // parent: (setOpen, type, data) => (
   //   <ParentForm setOpen={setOpen} type={type} data={data} />
   // ),
@@ -103,9 +122,6 @@ const forms: {
   // ),
   // lesson: (setOpen, type, data) => (
   //   <LessonForm setOpen={setOpen} type={type} data={data} />
-  // ),
-  // exam: (setOpen, type, data) => (
-  //   <ExamForm setOpen={setOpen} type={type} data={data} />
   // ),
   // assignment: (setOpen, type, data) => (
   //   <AssignmentForm setOpen={setOpen} type={type} data={data} />
@@ -154,7 +170,7 @@ const FormModal = ({
 
     useEffect(() => {
       if (state.success) {
-        toast(`Subject has been deleted!`);
+        toast(`${table} has been deleted!`);
         setOpen(false);
         router.refresh();
       }
