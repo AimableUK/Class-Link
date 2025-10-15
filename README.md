@@ -5,6 +5,10 @@ It simplifies how schools manage classes, exams, and student performance through
 
 ---
 
+<p>
+  <img src="./public/dash1.png" alt="Class Link Dashboard" width="650" height="400">
+</p>
+
 ## 🚀 Tech Stack
 
 | Layer | Technology |
